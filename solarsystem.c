@@ -24,9 +24,9 @@
 #define NUMPLANETS 2
 //enum PLANETS {EARTH, MOON};
 #else
-#define NUMPLANETS 4
-enum PLANETS {SUN, MERCURY, VENUS, EARTH};
-char * p_str[] = {"Sun", "Mercury", "Venus", "Earth"};
+#define NUMPLANETS 5
+enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS};
+char * p_str[] = {"Sun", "Mercury", "Venus", "Earth", "Mars"};
 //#elseif TEST == 3
 ////#define NUMPLANETS 10
 //enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO};
@@ -110,6 +110,13 @@ void init_planets()
     planets[EARTH].V.y  = EARTH_START_VY;
     planets[EARTH].V.z  = EARTH_START_VZ;
 
+    planets[MARS].mass = MARS_MASS;
+    planets[MARS].X.x  = MARS_START_X;
+    planets[MARS].X.y  = MARS_START_Y;
+    planets[MARS].X.z  = MARS_START_Z;
+    planets[MARS].V.x  = MARS_START_VX;
+    planets[MARS].V.y  = MARS_START_VY;
+    planets[MARS].V.z  = MARS_START_VZ;
 }
 
 void init_display()
@@ -117,10 +124,11 @@ void init_display()
     PYRUN("from visual import *\n");
 	PYRUN("from visual.graph import *\n");
 	PYRUN("scene1=display(autocenter = 0, autoscale = 1)\n");
-	PYRUN("sun=sphere(pos=(%f, %f ,%f), radius=%f, color=color.yellow)\n", 0.0, 0.0, 0.0, SUN_RAD*20);
+	PYRUN("sun=sphere(pos=(%f, %f ,%f), radius=%f, color=color.yellow)\n", 0.0, 0.0, 0.0, SUN_RAD*40);
 	PYRUN("mercury=sphere(pos=(%f, %f ,%f), radius=%f, color=color.magenta, make_trail=True)\n", planets[MERCURY].X.x, planets[MERCURY].X.y, planets[MERCURY].X.z, MER_RAD*5000);
 	PYRUN("venus=sphere(pos=(%f, %f ,%f), radius=%f, color=color.orange, make_trail=True)\n", planets[VENUS].X.x, planets[VENUS].X.y, planets[VENUS].X.z, VEN_RAD*1000);
 	PYRUN("earth=sphere(pos=(%f, %f ,%f), radius=%f, material=materials.earth, make_trail=True)\n", planets[EARTH].X.x, planets[EARTH].X.y, planets[EARTH].X.z, EARTH_RAD*5000);
+	PYRUN("mars=sphere(pos=(%f, %f ,%f), radius=%f, color=color.red, make_trail=True)\n", planets[MARS].X.x, planets[MARS].X.y, planets[MARS].X.z, MARS_RAD*2000);
 }
 
 void update_display()
@@ -128,6 +136,7 @@ void update_display()
     PYRUN("mercury.pos=(%f, %f, %f)\n", planets[MERCURY].X.x, planets[MERCURY].X.y, planets[MERCURY].X.z);
     PYRUN("venus.pos=(%f, %f, %f)\n", planets[VENUS].X.x, planets[VENUS].X.y, planets[VENUS].X.z);
     PYRUN("earth.pos=(%f, %f, %f)\n", planets[EARTH].X.x, planets[EARTH].X.y, planets[EARTH].X.z);
+    PYRUN("mars.pos=(%f, %f, %f)\n", planets[MARS].X.x, planets[MARS].X.y, planets[MARS].X.z);
 }
 #endif // TEST ==
 
