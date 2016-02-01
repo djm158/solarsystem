@@ -16,7 +16,7 @@
 
 #define PYRUN(...) memset(cmd_str, 0, 256); sprintf(cmd_str,__VA_ARGS__); PyRun_SimpleString(cmd_str);
 
-#define DT 100.0
+#define DT 500.0
 #define GRAV_CONST 6.67408e-11
 #define TEST 2
 
@@ -24,9 +24,9 @@
 #define NUMPLANETS 2
 //enum PLANETS {EARTH, MOON};
 #else
-#define NUMPLANETS 5
-enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS};
-char * p_str[] = {"Sun", "Mercury", "Venus", "Earth", "Mars"};
+#define NUMPLANETS 9
+enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE};
+char * p_str[] = {"Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"};
 //#elseif TEST == 3
 ////#define NUMPLANETS 10
 //enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO};
@@ -35,6 +35,7 @@ char * p_str[] = {"Sun", "Mercury", "Venus", "Earth", "Mars"};
 char cmd_str[256];
 Planet planets[NUMPLANETS];
 
+/* Calculate the distance between the center of two objects in three dimensions */
 double dist3D(Planet A, Planet B)
 {
     return sqrt(pow(A.X.x - B.X.x, 2.0) + pow(A.X.y - B.X.y, 2.0) + pow(A.X.z - B.X.z, 2.0));
@@ -78,6 +79,7 @@ void update_display()
 #else
 void init_planets()
 {
+    // initialize the sun
     planets[SUN].mass = SUN_MASS;
     planets[SUN].X.x  = 0;
     planets[SUN].X.y  = 0;
@@ -86,6 +88,7 @@ void init_planets()
     planets[SUN].V.y  = 0;
     planets[SUN].V.z  = 0;
 
+    // initialize mercury
     planets[MERCURY].mass = MER_MASS;
     planets[MERCURY].X.x  = MER_START_X;
     planets[MERCURY].X.y  = MER_START_Y;
@@ -94,6 +97,7 @@ void init_planets()
     planets[MERCURY].V.y  = MER_START_VY;
     planets[MERCURY].V.z  = MER_START_VZ;
 
+    // initialize venus
     planets[VENUS].mass = VEN_MASS;
     planets[VENUS].X.x  = VEN_START_X;
     planets[VENUS].X.y  = VEN_START_Y;
@@ -102,6 +106,7 @@ void init_planets()
     planets[VENUS].V.y  = VEN_START_VY;
     planets[VENUS].V.z  = VEN_START_VZ;
 
+    // initialize the earth
     planets[EARTH].mass = EARTH_MASS;
     planets[EARTH].X.x  = EARTH_START_X;
     planets[EARTH].X.y  = EARTH_START_Y;
@@ -110,6 +115,7 @@ void init_planets()
     planets[EARTH].V.y  = EARTH_START_VY;
     planets[EARTH].V.z  = EARTH_START_VZ;
 
+    // initialize mars
     planets[MARS].mass = MARS_MASS;
     planets[MARS].X.x  = MARS_START_X;
     planets[MARS].X.y  = MARS_START_Y;
@@ -117,6 +123,47 @@ void init_planets()
     planets[MARS].V.x  = MARS_START_VX;
     planets[MARS].V.y  = MARS_START_VY;
     planets[MARS].V.z  = MARS_START_VZ;
+
+    // initialize jupiter
+    planets[JUPITER].mass = JUP_MASS;
+    planets[JUPITER].X.x  = JUP_START_X;
+    planets[JUPITER].X.y  = JUP_START_Y;
+    planets[JUPITER].X.z  = JUP_START_Z;
+    planets[JUPITER].V.x  = JUP_START_VX;
+    planets[JUPITER].V.y  = JUP_START_VY;
+    planets[JUPITER].V.z  = JUP_START_VZ;
+
+    planets[SATURN].mass = SAT_MASS;
+    planets[SATURN].X.x  = SAT_START_X;
+    planets[SATURN].X.y  = SAT_START_Y;
+    planets[SATURN].X.z  = SAT_START_Z;
+    planets[SATURN].V.x  = SAT_START_VX;
+    planets[SATURN].V.y  = SAT_START_VY;
+    planets[SATURN].V.z  = SAT_START_VZ;
+
+    planets[URANUS].mass = URA_MASS;
+    planets[URANUS].X.x  = URA_START_X;
+    planets[URANUS].X.y  = URA_START_Y;
+    planets[URANUS].X.z  = URA_START_Z;
+    planets[URANUS].V.x  = URA_START_VX;
+    planets[URANUS].V.y  = URA_START_VY;
+    planets[URANUS].V.z  = URA_START_VZ;
+
+    planets[NEPTUNE].mass = NEP_MASS;
+    planets[NEPTUNE].X.x  = NEP_START_X;
+    planets[NEPTUNE].X.y  = NEP_START_Y;
+    planets[NEPTUNE].X.z  = NEP_START_Z;
+    planets[NEPTUNE].V.x  = NEP_START_VX;
+    planets[NEPTUNE].V.y  = NEP_START_VY;
+    planets[NEPTUNE].V.z  = NEP_START_VZ;
+
+//    planets[MOON].X.x = -1.482519236676080e11;//sqrt(2.0);
+//    planets[MOON].X.y =  1.367368643614177e10; //MOON_E/sqrt(2.0);
+//    planets[MOON].X.z = 1.466778903402388e7;
+//    planets[MOON].V.x = -2.371952311466861e3; //sqrt(300000.0);
+//    planets[MOON].V.y = -3.023221261795380e4;
+//    planets[MOON].V.z = -7.639163725249354e1;
+//    planets[MOON].mass = MOON_MASS;
 }
 
 void init_display()
@@ -129,6 +176,10 @@ void init_display()
 	PYRUN("venus=sphere(pos=(%f, %f ,%f), radius=%f, color=color.orange, make_trail=True)\n", planets[VENUS].X.x, planets[VENUS].X.y, planets[VENUS].X.z, VEN_RAD*1000);
 	PYRUN("earth=sphere(pos=(%f, %f ,%f), radius=%f, material=materials.earth, make_trail=True)\n", planets[EARTH].X.x, planets[EARTH].X.y, planets[EARTH].X.z, EARTH_RAD*5000);
 	PYRUN("mars=sphere(pos=(%f, %f ,%f), radius=%f, color=color.red, make_trail=True)\n", planets[MARS].X.x, planets[MARS].X.y, planets[MARS].X.z, MARS_RAD*2000);
+	PYRUN("jupiter=sphere(pos=(%f, %f ,%f), radius=%f, color=(1,0.7,0.2), make_trail=True)\n", planets[JUPITER].X.x, planets[JUPITER].X.y, planets[JUPITER].X.z, JUP_RAD*100);
+	PYRUN("saturn=sphere(pos=(%f, %f ,%f), radius=%f, color=(0.92,0.69,0.00), make_trail=True)\n", planets[SATURN].X.x, planets[SATURN].X.y, planets[SATURN].X.z, SAT_RAD*100);
+	PYRUN("uranus=sphere(pos=(%f, %f ,%f), radius=%f, color=color.blue, make_trail=True)\n", planets[URANUS].X.x, planets[URANUS].X.y, planets[URANUS].X.z, URA_RAD*1000);
+	PYRUN("neptune=sphere(pos=(%f, %f ,%f), radius=%f, color=color.cyan, make_trail=True)\n", planets[NEPTUNE].X.x, planets[NEPTUNE].X.y, planets[NEPTUNE].X.z, NEP_RAD*1000);
 }
 
 void update_display()
@@ -137,6 +188,10 @@ void update_display()
     PYRUN("venus.pos=(%f, %f, %f)\n", planets[VENUS].X.x, planets[VENUS].X.y, planets[VENUS].X.z);
     PYRUN("earth.pos=(%f, %f, %f)\n", planets[EARTH].X.x, planets[EARTH].X.y, planets[EARTH].X.z);
     PYRUN("mars.pos=(%f, %f, %f)\n", planets[MARS].X.x, planets[MARS].X.y, planets[MARS].X.z);
+    PYRUN("jupiter.pos=(%f, %f, %f)\n", planets[JUPITER].X.x, planets[JUPITER].X.y, planets[JUPITER].X.z);
+    PYRUN("saturn.pos=(%f, %f, %f)\n", planets[SATURN].X.x, planets[SATURN].X.y, planets[SATURN].X.z);
+    PYRUN("uranus.pos=(%f, %f, %f)\n", planets[URANUS].X.x, planets[URANUS].X.y, planets[URANUS].X.z);
+    PYRUN("neptune.pos=(%f, %f, %f)\n", planets[NEPTUNE].X.x, planets[NEPTUNE].X.y, planets[NEPTUNE].X.z);
 }
 #endif // TEST ==
 
@@ -186,11 +241,9 @@ int main()
     {
         update_planets();
         update_display();
-//        printf("moon x: %lf y: %lf z: %lf\n", planets[MOON].X.x, planets[MOON].X.y, planets[MOON].X.z);
-//        printf("moon vx: %lf vy: %lf vz: %lf\n", planets[MOON].V.x, planets[MOON].V.y, planets[MOON].V.z);
 
 //        PYRUN("earth.rotate(angle=pi/16, axis=(0,1,0), origin=earth.pos)\n");
-        PYRUN("rate(100000)");
+        PYRUN("rate(10000000)");
     }
 
     Py_Finalize();
