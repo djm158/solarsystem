@@ -1,6 +1,20 @@
 #ifndef PLANETS_H_INCLUDED
 #define PLANETS_H_INCLUDED
 
+/*
+ * This file defines the mass and radius
+ * of each of the planets to be simulated.
+ * It also defines two structs, a three dimensional
+ * vector and a planet object containing mass, position,
+ * velocity, and acceleration information.
+ *
+ * All defined constants were taken from JPL's HORIZONS
+ * http://ssd.jpl.nasa.gov/horizons.cgi
+ *
+ * The initial position and velocities of the planets
+ * occur on 03/15/2020
+ */
+
 /* define sun constants */
 #define SUN_MASS 1.988544e30
 #define SUN_RAD  6.963e8

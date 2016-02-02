@@ -16,13 +16,19 @@
 
 #define PYRUN(...) memset(cmd_str, 0, 256); sprintf(cmd_str,__VA_ARGS__); PyRun_SimpleString(cmd_str);
 
-#define DT 500.0
+#define DT 1.0
 #define GRAV_CONST 6.67408e-11
-#define TEST 2
+
+/*
+ * TEST:
+ *    1 - moon orbiting the earth
+ *    2 - planets orbiting the sun
+ */
+ #define TEST 1
 
 #if TEST == 1
 #define NUMPLANETS 2
-//enum PLANETS {EARTH, MOON};
+enum PLANETS {EARTH, MOON};
 #else
 #define NUMPLANETS 9
 enum PLANETS {SUN, MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE};
@@ -75,7 +81,8 @@ void update_display()
     PYRUN("moon.pos=(%f, %f, %f)\n", planets[MOON].X.x, planets[MOON].X.y, planets[MOON].X.z);
 }
 
-// simulation of the sun, mercury, venus, and earth
+/* simulation of the sun, mercury, venus,
+ * earth, mars, jupiter, saturn, uranus, and neptune */
 #else
 void init_planets()
 {
@@ -157,13 +164,6 @@ void init_planets()
     planets[NEPTUNE].V.y  = NEP_START_VY;
     planets[NEPTUNE].V.z  = NEP_START_VZ;
 
-//    planets[MOON].X.x = -1.482519236676080e11;//sqrt(2.0);
-//    planets[MOON].X.y =  1.367368643614177e10; //MOON_E/sqrt(2.0);
-//    planets[MOON].X.z = 1.466778903402388e7;
-//    planets[MOON].V.x = -2.371952311466861e3; //sqrt(300000.0);
-//    planets[MOON].V.y = -3.023221261795380e4;
-//    planets[MOON].V.z = -7.639163725249354e1;
-//    planets[MOON].mass = MOON_MASS;
 }
 
 void init_display()
@@ -193,8 +193,12 @@ void update_display()
     PYRUN("uranus.pos=(%f, %f, %f)\n", planets[URANUS].X.x, planets[URANUS].X.y, planets[URANUS].X.z);
     PYRUN("neptune.pos=(%f, %f, %f)\n", planets[NEPTUNE].X.x, planets[NEPTUNE].X.y, planets[NEPTUNE].X.z);
 }
-#endif // TEST ==
+#endif // TEST
 
+/* calculate the total acceleration on each planet
+ * due to every other planet. Once acceleration is calculated,
+ * integrate a to get velocity, integrate velocity to get position
+ */
 void update_planets()
 {
     double Ag;
@@ -217,7 +221,7 @@ void update_planets()
                 planets[i].A.z +=  -Ag * (planets[i].X.z - planets[j].X.z);
             }
         }
-//        printf("%s: ax: %.20lf ay: %.20f az: %.20lf\n", p_strs[i], planets[i].A.x, planets[i].A.y, planets[i].A.z);
+
         planets[i].V.x +=  planets[i].A.x*DT; /* continuosly integrate a for v */
         planets[i].V.y +=  planets[i].A.y*DT;
         planets[i].V.z +=  planets[i].A.z*DT;
@@ -227,11 +231,16 @@ void update_planets()
         planets[i].X.z +=  planets[i].V.z*DT;
     }
 
-
-
-
 }
 
+/* main program
+ * initialize graphics
+ * initialize planet state variables
+ * draw planets at initial positions
+ * while not done:
+ *      update planet state variables
+ *      redraw planets
+ */
 int main()
 {
     Py_Initialize();
