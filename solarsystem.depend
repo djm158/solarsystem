@@ -1,0 +1,254 @@
+# depslib dependency file v1.0
+1488386899 source:c:\users\djm158\documents\simulations\solarsystem\solarsystem.c
+	<stdio.h>
+	<stdlib.h>
+	"C:\Python32\include\Python.h"
+	"planets.h"
+	<math.h>
+
+1299595292 c:\python32\include\python.h
+	"patchlevel.h"
+	"pyconfig.h"
+	"pymacconfig.h"
+	<limits.h>
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<unistd.h>
+	<stddef.h>
+	<assert.h>
+	"pyport.h"
+	"pyatomic.h"
+	"pymath.h"
+	"pytime.h"
+	"pymem.h"
+	"object.h"
+	"objimpl.h"
+	"typeslots.h"
+	"pydebug.h"
+	"bytearrayobject.h"
+	"bytesobject.h"
+	"unicodeobject.h"
+	"longobject.h"
+	"longintrepr.h"
+	"boolobject.h"
+	"floatobject.h"
+	"complexobject.h"
+	"rangeobject.h"
+	"memoryobject.h"
+	"tupleobject.h"
+	"listobject.h"
+	"dictobject.h"
+	"enumobject.h"
+	"setobject.h"
+	"methodobject.h"
+	"moduleobject.h"
+	"funcobject.h"
+	"classobject.h"
+	"fileobject.h"
+	"pycapsule.h"
+	"traceback.h"
+	"sliceobject.h"
+	"cellobject.h"
+	"iterobject.h"
+	"genobject.h"
+	"descrobject.h"
+	"warnings.h"
+	"weakrefobject.h"
+	"structseq.h"
+	"codecs.h"
+	"pyerrors.h"
+	"pystate.h"
+	"pyarena.h"
+	"modsupport.h"
+	"pythonrun.h"
+	"ceval.h"
+	"sysmodule.h"
+	"intrcheck.h"
+	"import.h"
+	"abstract.h"
+	"bltinmodule.h"
+	"compile.h"
+	"eval.h"
+	"pyctype.h"
+	"pystrtod.h"
+	"pystrcmp.h"
+	"dtoa.h"
+	"fileutils.h"
+	"pyfpe.h"
+	<pth.h>
+
+1315145010 c:\python32\include\patchlevel.h
+
+1304481100 c:\python32\include\pyconfig.h
+	<io.h>
+	<stdlib.h>
+	<float.h>
+	<basetsd.h>
+	<io.h>
+	<stdio.h>
+
+1304480916 c:\python32\include\pymacconfig.h
+
+1304480916 c:\python32\include\pyport.h
+	"pyconfig.h"
+	<inttypes.h>
+	<stdint.h>
+	<stdlib.h>
+	<ieeefp.h>
+	<math.h>
+	<sys/time.h>
+	<time.h>
+	<sys/time.h>
+	<time.h>
+	<sys/select.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<stat.h>
+	<sys/types.h>
+	<sys/termio.h>
+	<termios.h>
+	<osreldate.h>
+	<ctype.h>
+	<wctype.h>
+
+1299595294 c:\python32\include\pyatomic.h
+	"dynamic_annotations.h"
+
+1299595294 c:\python32\include\dynamic_annotations.h
+
+1304481098 c:\python32\include\pymath.h
+	"pyconfig.h"
+
+1299595294 c:\python32\include\pytime.h
+	"pyconfig.h"
+
+1299595294 c:\python32\include\pymem.h
+	"pyport.h"
+
+1299595294 c:\python32\include\object.h
+
+1299595294 c:\python32\include\objimpl.h
+	"pymem.h"
+
+1299595294 c:\python32\include\typeslots.h
+
+1304481098 c:\python32\include\pydebug.h
+
+1299595292 c:\python32\include\bytearrayobject.h
+	<stdarg.h>
+
+1299595292 c:\python32\include\bytesobject.h
+	<stdarg.h>
+
+1304481098 c:\python32\include\unicodeobject.h
+	<stdarg.h>
+	<ctype.h>
+	<time.h>
+	<wchar.h>
+
+1299595294 c:\python32\include\longobject.h
+
+1299595294 c:\python32\include\longintrepr.h
+
+1299595292 c:\python32\include\boolobject.h
+
+1299595294 c:\python32\include\floatobject.h
+
+1299595292 c:\python32\include\complexobject.h
+
+1299595294 c:\python32\include\rangeobject.h
+
+1299595294 c:\python32\include\memoryobject.h
+
+1299595294 c:\python32\include\tupleobject.h
+
+1299595294 c:\python32\include\listobject.h
+
+1299595294 c:\python32\include\dictobject.h
+
+1299595294 c:\python32\include\enumobject.h
+
+1299595294 c:\python32\include\setobject.h
+
+1299595294 c:\python32\include\methodobject.h
+
+1304481098 c:\python32\include\moduleobject.h
+
+1299595294 c:\python32\include\funcobject.h
+
+1299595292 c:\python32\include\classobject.h
+
+1299595294 c:\python32\include\fileobject.h
+
+1299595294 c:\python32\include\pycapsule.h
+
+1304481098 c:\python32\include\traceback.h
+
+1299595294 c:\python32\include\sliceobject.h
+
+1299595292 c:\python32\include\cellobject.h
+
+1299595294 c:\python32\include\iterobject.h
+
+1299595294 c:\python32\include\genobject.h
+
+1299595294 c:\python32\include\descrobject.h
+
+1299595294 c:\python32\include\warnings.h
+
+1299595294 c:\python32\include\weakrefobject.h
+
+1299595294 c:\python32\include\structseq.h
+
+1299595292 c:\python32\include\codecs.h
+
+1304481098 c:\python32\include\pyerrors.h
+	<stdarg.h>
+
+1313335038 c:\python32\include\pystate.h
+
+1299595294 c:\python32\include\pyarena.h
+
+1299595294 c:\python32\include\modsupport.h
+	<stdarg.h>
+
+1305005564 c:\python32\include\pythonrun.h
+
+1299595292 c:\python32\include\ceval.h
+
+1299595294 c:\python32\include\sysmodule.h
+
+1299595294 c:\python32\include\intrcheck.h
+
+1304481098 c:\python32\include\import.h
+
+1304480916 c:\python32\include\abstract.h
+
+1299595292 c:\python32\include\bltinmodule.h
+
+1299595292 c:\python32\include\compile.h
+	"code.h"
+
+1299595292 c:\python32\include\code.h
+
+1299595294 c:\python32\include\eval.h
+
+1299595294 c:\python32\include\pyctype.h
+
+1299595294 c:\python32\include\pystrtod.h
+
+1299595294 c:\python32\include\pystrcmp.h
+
+1299595294 c:\python32\include\dtoa.h
+
+1299595294 c:\python32\include\fileutils.h
+
+1299595294 c:\python32\include\pyfpe.h
+	<signal.h>
+	<setjmp.h>
+	<math.h>
+
+1454303722 c:\users\djm158\documents\simulations\solarsystem\planets.h
+
